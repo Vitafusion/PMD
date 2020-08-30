@@ -1,0 +1,9 @@
+{
+    "path" : "~/repo/poissonmulti",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}
