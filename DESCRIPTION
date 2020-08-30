@@ -1,11 +1,10 @@
 Package: poissonmulti
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Calculate probability density of Poisson Multinomial Distiribution
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Zhengzhi(Alex) Lin
+Maintainer: Zhengzhi Lin(zhengzhi@vt.edu)
+Description: Using three methods to calculate the densities. Multinomial Discrete Fourier Transformation, Normal approximation, and Simulation method.
+License: GPL-2
 Encoding: UTF-8
 LazyData: true
