@@ -1,4 +1,16 @@
+
 ################################################################################
+#'dpmn
+#'
+#' @param kk is NULL
+#' @param pp The pp is a probability matrix which will be input by user
+#'
+#' @return The probability density of PMD
+#' @export
+#'
+#' @examples
+#' dpmn(pp=matrix(c(.1, .2, .7, .2, .5, .3, .7, .1, .2, .5, .2, .3), nrow=4, byrow=T))
+
 dpmn=function(kk=NULL, pp)
 {
     dyn.load("pm-fft.so")
@@ -49,6 +61,18 @@ dpmn=function(kk=NULL, pp)
   return(res)
 }
 ################################################################################
+
+
+#' Title
+#'
+#' @param k input by given functions
+#' @param cn.vec calculated by given fucntions
+#' @param m dimensions
+#'
+#' @return A vector, which will be used in other functions
+#' @export
+#'
+#' @examples
 l.vec.compute=function(k, cn.vec, m)
 {
   k=k-1
@@ -63,7 +87,22 @@ l.vec.compute=function(k, cn.vec, m)
   l.vec=l.vec+1
   return(l.vec)
 }
+
+
+
 ################################################################################
+#' Title
+#'
+#' @param n column dimension
+#' @param m row dimension
+#'
+#' @return a randomly generated Poisson multinomial distribution probability matrix
+#' @export
+#'
+#' @examples
+#' pmatrix(2,2)
+
+
 pmatrix <- function(n,m){
   p <- matrix(0,nrow = n,ncol = m,byrow = T)
   for (i in 1:n) {
@@ -73,7 +112,21 @@ pmatrix <- function(n,m){
   }
   return(p)
 }
+
+
+
+
 ##################################################################################
+#' Title
+#'
+#' @param kk NULL
+#' @param pp PMD probability matrix
+#' @param t repeat time
+#'
+#' @return probabilities of all possible outcomes
+#' @export
+#'
+#' @examples
 dpm_sim = function(kk=NULL,pp,t){
   dyn.load("simulation.so")
   mm=ncol(pp) # m categories
@@ -92,7 +145,22 @@ dpm_sim = function(kk=NULL,pp,t){
   res=round(temp[[1]],10)
   return(res)
 }
+
+
+
+
+
 #####################################################################################
+#' Title
+#'
+#' @param kk NULL
+#' @param pp PMD probability matrix
+#' @param x_vec an outcome matrix given by user
+#'
+#' @return
+#' @export probability of the given outcome
+#'
+#' @examples
 dpm_noraml = function(kk=NULL,pp,x_vec){
   dyn.load("normal_appro.so")
   mm=ncol(pp) # m categories
