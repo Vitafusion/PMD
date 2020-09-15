@@ -13,7 +13,6 @@
 
 dpmn=function(kk=NULL, pp)
 {
-    dyn.load("pm-fft.so")
     mm=ncol(pp) # m categories
     nn=nrow(pp) # n people
 
@@ -29,7 +28,7 @@ dpmn=function(kk=NULL, pp)
 
   #browser()
 
-  tmp=.C("pmn_mdfft", as.double(res0), as.integer(nnt), as.integer(nn), as.integer(mm), as.double(pp), as.integer(nn.vec), as.integer(l.vec), as.integer(cn.vec))
+  tmp=.C("functions", as.double(res0), as.integer(nnt), as.integer(nn), as.integer(mm), as.double(pp), as.integer(nn.vec), as.integer(l.vec), as.integer(cn.vec))
   res0=tmp[[1]]
   #example an_array[k + 27 * (j + 12 * i)]
   #print(round(res0, 9))
@@ -128,7 +127,6 @@ pmatrix <- function(n,m){
 #'
 #' @examples
 dpm_sim = function(kk=NULL,pp,t){
-  dyn.load("simulation.so")
   mm=ncol(pp) # m categories
   nn=nrow(pp) # n people
   nn.vec=rep(nn+1, mm-1)
@@ -139,7 +137,7 @@ dpm_sim = function(kk=NULL,pp,t){
   cn.vec=as.integer(cn.vec)
   nnt=prod(nn.vec)
   res0=double(nnt)
-  temp=.C("pmd_simulation", as.double(res0),
+  temp=.C("functions", as.double(res0),
           as.integer(nnt) , as.integer(nn), as.integer(mm), as.double(pp),
           as.integer(nn.vec), as.integer(l.vec), as.integer(cn.vec), as.double(t))
   res=round(temp[[1]],10)
@@ -162,12 +160,11 @@ dpm_sim = function(kk=NULL,pp,t){
 #'
 #' @examples
 dpm_noraml = function(kk=NULL,pp,x_vec){
-  dyn.load("normal_appro.so")
   mm=ncol(pp) # m categories
   mm = mm - 1
   nn=nrow(pp) # n people
   x_vec = x_vec[1:(length(x_vec)-1)]
 
-  temp=.C("pmd_normal", res0 = as.double(0) ,as.integer(nn), as.integer(mm), as.double(pp),as.integer(x_vec))
+  temp=.C("functions", res0 = as.double(0) ,as.integer(nn), as.integer(mm), as.double(pp),as.integer(x_vec))
   return(temp$res0)
 }

@@ -3,8 +3,8 @@ Type: Package
 Title: Calculate probability density of Poisson Multinomial Distiribution
 Version: 0.1.0
 Author: Zhengzhi(Alex) Lin
-Maintainer: Zhengzhi Lin(zhengzhi@vt.edu)
+Maintainer: Zhengzhi Lin <zhengzhi@vt.edu>
 Description: Using three methods to calculate the densities. They are Multinomial Discrete Fourier Transformation, Normal approximation, and Simulation method. Users just need to input probability matrix to get desired density output.
-License: GPL-2
+License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
