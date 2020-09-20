@@ -1,1 +1,2 @@
-exportPattern("^[[:alpha:]]+")
+useDynLib(poissonmulti, .registration = TRUE)
+export(dpm_sim, dpm_noraml, pmatrix, dpmn)
