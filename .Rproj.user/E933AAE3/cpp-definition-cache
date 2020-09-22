@@ -1,2 +1,44 @@
 [
+    {
+        "definitions" : [
+            {
+                "column" : 6,
+                "file" : "/home/admin1/repo/poissonmulti/src/functions.c",
+                "kind" : 6,
+                "line" : 23,
+                "name" : "l_vec_compute(int, int *, int *, int)",
+                "parent_name" : "",
+                "usr" : "c:@F@l_vec_compute#I#*I#S0_#I#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/admin1/repo/poissonmulti/src/functions.c",
+                "kind" : 6,
+                "line" : 40,
+                "name" : "pmn_mdfft(double *, int *, int *, int *, double *, int *, int *, int *)",
+                "parent_name" : "",
+                "usr" : "c:@F@pmn_mdfft#*d#*I#S1_#S1_#S0_#S1_#S1_#S1_#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/admin1/repo/poissonmulti/src/functions.c",
+                "kind" : 6,
+                "line" : 139,
+                "name" : "pmd_simulation(double *, int *, int *, int *, double *, int *, int *, int *, double)",
+                "parent_name" : "",
+                "usr" : "c:@F@pmd_simulation#*d#*I#S1_#S1_#S0_#S1_#S1_#S1_#d#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/admin1/repo/poissonmulti/src/functions.c",
+                "kind" : 6,
+                "line" : 248,
+                "name" : "pmd_normal(int *, int *, double *, int *)",
+                "parent_name" : "",
+                "usr" : "c:@F@pmd_normal#*I#S0_#*d#S0_#"
+            }
+        ],
+        "file" : "/home/admin1/repo/poissonmulti/src/functions.c",
+        "file_last_write" : 1600733756.000000
+    }
 ]

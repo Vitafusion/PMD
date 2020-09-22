@@ -28,7 +28,7 @@ dpmn=function(kk=NULL, pp)
 
   #browser()
 
-  tmp=.C("functions", as.double(res0), as.integer(nnt), as.integer(nn), as.integer(mm), as.double(pp), as.integer(nn.vec), as.integer(l.vec), as.integer(cn.vec))
+  tmp=.C("pmn_mdfft", as.double(res0), as.integer(nnt), as.integer(nn), as.integer(mm), as.double(pp), as.integer(nn.vec), as.integer(l.vec), as.integer(cn.vec), PACKAGE = "poissonmulti")
   res0=tmp[[1]]
   #example an_array[k + 27 * (j + 12 * i)]
   #print(round(res0, 9))
@@ -137,9 +137,9 @@ dpm_sim = function(kk=NULL,pp,t){
   cn.vec=as.integer(cn.vec)
   nnt=prod(nn.vec)
   res0=double(nnt)
-  temp=.C("functions", as.double(res0),
+  temp=.C("pmd_simulation", as.double(res0),
           as.integer(nnt) , as.integer(nn), as.integer(mm), as.double(pp),
-          as.integer(nn.vec), as.integer(l.vec), as.integer(cn.vec), as.double(t))
+          as.integer(nn.vec), as.integer(l.vec), as.integer(cn.vec), as.double(t),PACKAGE = "poissonmulti")
   res=round(temp[[1]],10)
   return(res)
 }
@@ -165,6 +165,6 @@ dpm_noraml = function(kk=NULL,pp,x_vec){
   nn=nrow(pp) # n people
   x_vec = x_vec[1:(length(x_vec)-1)]
 
-  temp=.C("functions", res0 = as.double(0) ,as.integer(nn), as.integer(mm), as.double(pp),as.integer(x_vec))
+  temp=.C("pmd_normal", res0 = as.double(0) ,as.integer(nn), as.integer(mm), as.double(pp),as.integer(x_vec), PACKAGE = "poissonmulti")
   return(temp$res0)
 }
