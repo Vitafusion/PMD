@@ -245,7 +245,7 @@ return;
 }
 //*****************************************************************************//
 
-void pmd_normal(int *nn, int *mm, double *pp, int *x_vec)
+void pmd_normal(double *res, int *nn, int *mm, double *pp, int *x_vec)
 {
   int n,i,j,k;
   n=nn[0];
@@ -256,9 +256,6 @@ void pmd_normal(int *nn, int *mm, double *pp, int *x_vec)
   for(i=0;i<nn[0];i++)
 	for(j=0;j<m;j++)
 		p[i][j]=pp[i+nn[0]*j];
-
-//define result variable
-  double obs_res = 0;
 
 //gsl variables
   gsl_vector * mu = gsl_vector_calloc(m);
@@ -326,10 +323,8 @@ void pmd_normal(int *nn, int *mm, double *pp, int *x_vec)
   gsl_linalg_cholesky_decomp1(L);
 
 // calculate probability of given x
-  gsl_ran_multivariate_gaussian_pdf(x, mu, L, &obs_res, work);
-  printf("obs_res: %lf\n",obs_res);
+  gsl_ran_multivariate_gaussian_pdf(x, mu, L, &*res, work);
 
-//result:  printf("obs_res: %lf\n",obs_res);
   free(*p);
   gsl_vector_free(mu);
   gsl_matrix_free(Sigma);

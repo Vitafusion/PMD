@@ -1,8 +1,6 @@
-\name{pmd}
-\alias{dpmn}
+\name{poissonmultinomial}
+\alias{pmd}
 \alias{pmatrix}
-\alias{dpm_sim}
-\alias{dpm_noraml}
 \title{
 The Poisson Multinomial Distribution.
 }
@@ -10,14 +8,11 @@ The Poisson Multinomial Distribution.
 The probability mass function of Poisson Multinomial Distribution and a Poisson Multinomial probability matrix generator.
 }
 \usage{
-dpmn(kk=NULL,pp)
+pmd(pp,method="DFT-CF",vec=c(0,0,0,0,0),t=100)
 pmatrix(n,m)
-dpm_sim(kk=NULL,pp,t)
-dpm_noraml(kk=NULL,pp,x_vec)
 }
 \arguments{
-  \item{kk}{
-   Null
+  \item{method}{The chosen method to compute probability mass.
 }
   \item{pp}{ The matrix for \eqn{p_j}'s which are the sucess probabilities matrix for indicators.
 }
@@ -27,7 +22,7 @@ dpm_noraml(kk=NULL,pp,x_vec)
 }
   \item{m}{ Number of columns of the probabilities matrix.
 }
-  \item{x_vec}{ A result vector that is used for calculating the probability.
+  \item{vec}{ A result vector that is used for calculating the probability.
 
   }
 }
@@ -48,12 +43,15 @@ Hong, Y. (2013). On computing the distribution function for the Poisson binomial
 
 
 \examples{
-   aa=matrix(c(.2, .1, .7, .2, .4, .4, .2, .1, .7, .2, .4, .4, .2, .1, .7, .2, .4, .4), nrow=6, byrow=TRUE)
-   dpmn(kk=NULL,pp=aa[1:2,])
+
    n <- 4
    m <- 3
    pp <- pmatrix(n,m)
-   dpm_sim(kk=NULL, pp,1000)
+   pmd(pp,method="simulation",t=1000)
+   vec <- c(1,2,1)
+   pmd(pp,method="NA",vec,t=1000)
+   pmd(pp)
+
 }
 
 
